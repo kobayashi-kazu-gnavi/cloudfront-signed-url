@@ -38,6 +38,9 @@ func handler(ctx context.Context) {
 
 	// create signed url
 	signedURL, err := signer.Sign(url, time.Now().Add(24*time.Hour))
-
+	if err != nil {
+		fmt.Printf("failed to create signed cookie: %v\n", err)
+		return
+	}
 	fmt.Printf("signed url: %s\n", signedURL)
 }
